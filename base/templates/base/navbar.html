@@ -1,0 +1,54 @@
+{% load static %}
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid d-flex justify-content-between">
+        <!-- TODO: if not logged in, go to homepage. -->
+        <!-- TODO: if logged in, go to active user feed -->
+        <a class="navbar-brand" href="#">Django Social Network</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+            <form class="d-flex ms-auto me-auto mb-2" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <!-- TODO: if not logged in, go to homepage. -->
+                    <!-- TODO: if logged in, go to active user feed -->
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+                <!-- TODO: if not logged in, show 'register' and 'login' links. -->
+                <!-- TODO: if logged in, show avatar/dropdown menu -->
+                <li class="nav-item dropdown">
+                    <!-- TODO: Put img tag inside a tag for user avatar -->
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Avatar
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                </li>
+                <!-- TODO: Get rid of this nav item if not needed or switch with drop down menu if can be used for another purpose -->
+                <li class="nav-item">
+                    <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</nav>

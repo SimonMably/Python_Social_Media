@@ -4,7 +4,11 @@
     <div class="container-fluid d-flex justify-content-between">
         <!-- TODO: if not logged in, go to homepage. -->
         <!-- TODO: if logged in, go to active user feed -->
-        <a class="navbar-brand" href="#">Django Social Network</a>
+        {% if user.is_authenticated %}
+            <a class="navbar-brand" href="{% url 'user-feed' %}">Django Social Network</a>
+        {% else %}
+            <a class="navbar-brand" href="{% url 'initial-home' %}">Django Social Network</a>
+        {% endif %}
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -21,32 +25,44 @@
                 <li class="nav-item">
                     <!-- TODO: if not logged in, go to homepage. -->
                     <!-- TODO: if logged in, go to active user feed -->
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    {% if user.is_authenticated %}
+                        <a class="nav-link active" aria-current="page" href="{% url 'user-feed' %}">Home</a>
+                    {% else %}
+                        <a class="nav-link active" aria-current="page" href="{% url 'initial-home' %}">Home</a>
+                    {% endif %}
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Link</a>
                 </li>
-                <!-- TODO: if not logged in, show 'register' and 'login' links. -->
-                <!-- TODO: if logged in, show avatar/dropdown menu -->
-                <li class="nav-item dropdown">
-                    <!-- TODO: Put img tag inside a tag for user avatar -->
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        Avatar
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
-                </li>
-                <!-- TODO: Get rid of this nav item if not needed or switch with drop down menu if can be used for another purpose -->
                 <li class="nav-item">
-                    <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                    <a class="nav-link" href="#">Link</a>
                 </li>
+                {% if user.is_authenticated %}
+                    <!-- TODO: if not logged in, show 'register' and 'login' links. -->
+                    <!-- TODO: if logged in, show avatar/dropdown menu -->
+                    <li class="nav-item dropdown">
+                        <!-- TODO: Put img tag inside a tag for user avatar -->
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Avatar
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-start">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+                        </ul>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'register' %}">Register</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">Login</a>
+                    </li>
+                {% endif %}
             </ul>
         </div>
 
